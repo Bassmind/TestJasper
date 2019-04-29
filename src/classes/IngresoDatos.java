@@ -18,6 +18,9 @@ public class IngresoDatos extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor para generar el JFrame
+	 */
 	public IngresoDatos(){
 		super("Ingreso de datos");
 		setSize(600, 380);
@@ -25,10 +28,13 @@ public class IngresoDatos extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
-		ingresarDatos();
+		crearInterfazIngresarDatos();
 	}
 	
-	private void ingresarDatos(){
+	/**
+	 * Creación de los elementos que iran en el JFrame, y se añaden eventos
+	 */
+	private void crearInterfazIngresarDatos(){
 		Container cp = getContentPane();
 		cp.setLayout(new FlowLayout());
 		int propiedadAlto = this.getHeight()/30;
@@ -77,12 +83,12 @@ public class IngresoDatos extends JFrame {
 		botonAceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				Map<String,String> map = new HashMap<>();
-				map.put("nombre", textFieldNombre.getText());
-				map.put("direccion", textFieldDireccion.getText());
-				map.put("fechaNacimiento", textFieldFechaNacimiento.getText());
-				map.put("edad", textFieldEdad.getText());
-				map.put("telefono", textFieldTelefono.getText());
-				map.put("tratamiento", textFieldTratamiento.getText());
+				map.put("ContactName", textFieldNombre.getText());
+				map.put("Address", textFieldDireccion.getText());
+				map.put("Birthdate", textFieldFechaNacimiento.getText());
+				map.put("Age", textFieldEdad.getText());
+				map.put("Phone", textFieldTelefono.getText());
+				map.put("treatment", textFieldTratamiento.getText());
 				confirmarDatos(map);
 			}
 		});
@@ -122,19 +128,26 @@ public class IngresoDatos extends JFrame {
 		cp.add(botonCancelar);
 	}
 	
-	public void confirmarDatos(Map map){
-		String datos = "\nNombre: " + map.get("nombre")+"\n"
-				+ "Direccion: " + map.get("direccion")+"\n"
-				+ "Fecha de Nacimiento: " + map.get("fechaNacimiento")+"\n"
-				+ "Edad: " + map.get("edad")+"\n"
-				+ "Telefono: " + map.get("telefono")+"\n"
-				+ "Tratamiento: " + map.get("tratamiento")+"\n";
+	/**
+	 * JOptionPane para confirmar que la información esté correcta.
+	 * 	Continuar: se procede a la impresión
+	 * 	Regresar: se regresa al JFrame para editar información
+	 * 
+	 * @param map: contiene información ingresada en el JFrame
+	 */
+	public void confirmarDatos(Map<String,String> map){
+		String datos = "\nNombre: " + map.get("ContactName")+"\n"
+				+ "Direccion: " + map.get("Address")+"\n"
+				+ "Fecha de Nacimiento: " + map.get("Birthdate")+"\n"
+				+ "Edad: " + map.get("Age")+"\n"
+				+ "Telefono: " + map.get("Phone")+"\n"
+				+ "Tratamiento: " + map.get("treatment")+"\n";
 		
 		if(JOptionPane.showConfirmDialog(this, "¿Está la información correcta?"
 				+ datos, "CONFIRMACION",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
 			System.out.println("YESS");
 			this.setVisible(false);
-			new GenerarReporte();
+			new GenerarReporte(map);
 		}
 		else{
 			System.out.println("NOO");

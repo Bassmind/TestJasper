@@ -2,5 +2,16 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/jasperreports-6.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/com.fasterxml.jackson.databind.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/com.lowagie.text-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/commons.collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/jackson-annotations-2.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/jackson-core-2.4.0-rc3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/pdfbox-2.0.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/fontbox-2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
