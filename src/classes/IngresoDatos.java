@@ -88,7 +88,7 @@ public class IngresoDatos extends JFrame {
 				map.put("Birthdate", textFieldFechaNacimiento.getText());
 				map.put("Age", textFieldEdad.getText());
 				map.put("Phone", textFieldTelefono.getText());
-				map.put("treatment", textFieldTratamiento.getText());
+				map.put("Treatment", textFieldTratamiento.getText());
 				confirmarDatos(map);
 			}
 		});
@@ -141,7 +141,7 @@ public class IngresoDatos extends JFrame {
 				+ "Fecha de Nacimiento: " + map.get("Birthdate")+"\n"
 				+ "Edad: " + map.get("Age")+"\n"
 				+ "Telefono: " + map.get("Phone")+"\n"
-				+ "Tratamiento: " + map.get("treatment")+"\n";
+				+ "Tratamiento: " + map.get("Treatment")+"\n";
 		
 		if(JOptionPane.showConfirmDialog(this, "¿Está la información correcta?"
 				+ datos, "CONFIRMACION",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
@@ -154,4 +154,10 @@ public class IngresoDatos extends JFrame {
 			
 		}
 	}
+	/*
+	 *  * Eliminar archivos bien
+	 	* JFrame por Java FX
+	 	* Edad as Integer, cambiar a string
+	 * 
+	 */
 }

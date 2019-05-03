@@ -29,8 +29,9 @@ public class GenerarReporte {
 			
 			generarReporte(map);
 			imprimirPrimerPagina();
-			//imprimirSegundaPagina();
+			imprimirSegundaPagina();
 			eliminarPDFGenerado();
+			System.exit(0);
 		}
 		catch(Exception e){
 			System.out.println("Fallo en la generacion del report: " + e.getMessage());
@@ -47,8 +48,9 @@ public class GenerarReporte {
 		String patientString = "{\"Phone\":\"" + ((map.get("Phone")==null)?"":map.get("Phone")) 
         	+ "\",\"ContactName\":\"" + ((map.get("ContactName")==null)?"":map.get("ContactName")) 
         	+ "\",\"Address\":\"" + ((map.get("Address")==null)?"":map.get("Address")) 
+        	+ "\",\"Age\":\"" + ((map.get("Age")==null)?"":map.get("Age")) 
         	+ "\",\"Birthdate\":\"" + ((map.get("Birthdate")==null)?"":map.get("Birthdate")) 
-        	+ "\",\"treatment\":\"" + ((map.get("treatment")==null)?"":map.get("treatment")) + "\"}";
+        	+ "\",\"Treatment\":\"" + ((map.get("Treatment")==null)?"":map.get("Treatment")) + "\"}";
 		
         System.out.println(patientString);
         JasperReport report = (JasperReport) JRLoader.loadObject(new File("C:/json/Blank_Letter.jasper"));
@@ -84,12 +86,12 @@ public class GenerarReporte {
 	/**
 	 * Imprime la segunda página del PDF
 	 */
-	/*public void imprimirSegundaPagina(){
+	public void imprimirSegundaPagina(){
 		try{
 			JOptionPane.showMessageDialog(null, "Ahora se imprimirá la segunda página del reporte."
 			 	+ " Por favor inserte la hoja en la posición deseada.");
-			Cambiar nombre de PDF
-			PDDocument document = PDDocument.load(new File("jasperpdfexample.pdf"));
+			
+			PDDocument document = PDDocument.load(new File("page2.pdf"));
 			PrinterJob job = PrinterJob.getPrinterJob();
 			
 			if (job.printDialog() == true) {
@@ -100,7 +102,7 @@ public class GenerarReporte {
 		catch (PrinterException | IOException ex) {
 			System.out.println("Error durante impresión: " + ex.getMessage());
 		}
-	}*/
+	}
 	
 	/**
 	 * Elimina el PDF generado. Falta trabajo

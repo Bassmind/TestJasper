@@ -12,6 +12,7 @@
 	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/jackson-annotations-2.1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/jackson-core-2.4.0-rc3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/pdfbox-2.0.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/fontbox-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/pdfbox-app-2.0.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JoséDavidCristóbal/Downloads/librerias Jasper/fontbox-2.0.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
