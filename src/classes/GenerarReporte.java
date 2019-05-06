@@ -5,6 +5,7 @@ import java.awt.print.PrinterJob;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
@@ -23,18 +24,23 @@ import net.sf.jasperreports.engine.data.JsonDataSource;
 import org.apache.pdfbox.printing.PDFPageable;
 
 public class GenerarReporte {
+	public GenerarReporte(){
+		
+	}
+	
 	public GenerarReporte(Map<String,String> map){
 		try{
-			System.out.println("FINALIZA EJECUCION");
-			
 			generarReporte(map);
 			imprimirPrimerPagina();
 			imprimirSegundaPagina();
-			eliminarPDFGenerado();
-			System.exit(0);
+			
+			System.out.println("FINALIZA EJECUCION");
 		}
 		catch(Exception e){
 			System.out.println("Fallo en la generacion del report: " + e.getMessage());
+		}
+		finally{
+			System.exit(0);
 		}
 	}
 	
@@ -45,22 +51,35 @@ public class GenerarReporte {
 	 * @throws JRException
 	 */
 	public void generarReporte(Map<String,String> map) throws JRException{
-		String patientString = "{\"Phone\":\"" + ((map.get("Phone")==null)?"":map.get("Phone")) 
-        	+ "\",\"ContactName\":\"" + ((map.get("ContactName")==null)?"":map.get("ContactName")) 
-        	+ "\",\"Address\":\"" + ((map.get("Address")==null)?"":map.get("Address")) 
-        	+ "\",\"Age\":\"" + ((map.get("Age")==null)?"":map.get("Age")) 
-        	+ "\",\"Birthdate\":\"" + ((map.get("Birthdate")==null)?"":map.get("Birthdate")) 
-        	+ "\",\"Treatment\":\"" + ((map.get("Treatment")==null)?"":map.get("Treatment")) + "\"}";
+		if(map.get("Phone").equals("")){
+			System.out.println("s"+map.get("Phone"));
+		}
+		else{
+			System.out.println("HOla");
+		}
+		String patientString = "{\"Phone\":\"" + ((map.get("Phone").equals(""))?"":map.get("Phone")) 
+        	+ "\",\"ContactName\":\"" + ((map.get("ContactName").equals(""))?"":map.get("ContactName")) 
+        	+ "\",\"Address\":\"" + ((map.get("Address").equals(""))?"":map.get("Address")) 
+        	+ "\",\"Age\":\"" + ((map.get("Age").equals(""))?0:map.get("Age")) 
+        	+ "\",\"Birthdate\":\"" + ((map.get("Birthdate").equals(""))?"":map.get("Birthdate")) 
+        	+ "\",\"Treatment\":\"" + ((map.get("Treatment").equals(""))?"":map.get("Treatment")) + "\"}";
 		
-        System.out.println(patientString);
-        JasperReport report = (JasperReport) JRLoader.loadObject(new File("C:/json/Blank_Letter.jasper"));
+		ClassLoader classLoader = getClass().getClassLoader();
+		URL resource = classLoader.getResource("./Blank_Letter.jasper");
+        if (resource == null) {
+            throw new IllegalArgumentException("File is not found!");
+        }
+        		
+		System.out.println(patientString);
+        //Cargar el Reporte
+		JasperReport report = (JasperReport) JRLoader.loadObject(new File(resource.getFile()));
+        
+		//Llenar el reporte con datos del JSON construido
 		ByteArrayInputStream jsonDataStream = new ByteArrayInputStream(patientString.getBytes());
-		
 		JsonDataSource ds = new JsonDataSource(jsonDataStream);
 		JasperPrint jasperPrint = JasperFillManager.fillReport(report,null,ds);
 		
 		JasperExportManager.exportReportToPdfFile(jasperPrint,"jasperpdfexample.pdf");
-		
 		System.out.println("PDF GENERADO");
 	}
 	
@@ -102,16 +121,5 @@ public class GenerarReporte {
 		catch (PrinterException | IOException ex) {
 			System.out.println("Error durante impresión: " + ex.getMessage());
 		}
-	}
-	
-	/**
-	 * Elimina el PDF generado. Falta trabajo
-	 */
-	public void eliminarPDFGenerado(){
-		File fichero = new File("jasperpdfexample.pdf");
-		 if (fichero.delete())
-		 	System.out.println("El fichero ha sido borrado satisfactoriamente");
-		 else
-		 	System.out.println("El fichero no pudó ser borrado");
 	}
 }

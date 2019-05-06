@@ -155,9 +155,7 @@ public class IngresoDatos extends JFrame {
 		}
 	}
 	/*
-	 *  * Eliminar archivos bien
-	 	* JFrame por Java FX
-	 	* Edad as Integer, cambiar a string
+	 *  * JFrame por Java FX
 	 * 
 	 */
 }
